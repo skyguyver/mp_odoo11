@@ -1,1 +1,1 @@
-from . import res
+from . import model

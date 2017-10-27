@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'mp_base',
+    'name': 'MalPhi',
     'version': '1',
     'category': 'MalPhi',
+    'summary': 'MalPhi system',
     'description': """
-Base module for MalPhi system.
-===================================================
-""",
+This application allows you to manage your customers for MalPhi.
+    """,
     'depends': ['base'],
-    'data': [],
+    'data': ['views/malphi_views.xml'],
     'demo': [],
     'test': [],
     'installable': True,
