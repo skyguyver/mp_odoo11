@@ -3,10 +3,38 @@
     <!-- Top menu item -->
     <menuitem id="menu_root" name="MalPhi"/>
 
-    <!--action-->
+    <record id="customers_form_view" model="ir.ui.view">
+        <field name="name">customers - form view</field>
+        <field name="model">mp.customers</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <form>
+            <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name" default_focus="1" placeholder="Name"/>
+                    </h1>
+                </div>
+            </sheet>
+            </form>
+        </field>
+    </record>
+    action
+
+    <record id="customers_tree_view" model="ir.ui.view">
+        <field name="name">customers view form</field>
+        <field name="model">mp.customers</field>
+        <field name="arch" type="xml">
+            <tree string="My First Tree View">
+                <field name="name"/>
+                <field name="passport"/>
+            </tree>
+        </field>
+    </record>
+
     <record id="action_customer" model="ir.actions.act_window">
     <field name="name">Customer</field>
-    <field name="res_model">mp.province</field>
+    <field name="res_model">mp.customers</field>
     <field name="view_type">form</field>
     <field name="view_mode">tree,form</field>
     <field name="help" type="html">
@@ -16,7 +44,20 @@
     </field>
     </record>
 
+    <record id="action_province" model="ir.actions.act_window">
+    <field name="name">Province</field>
+    <field name="res_model">mp.province</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+            Click here to create new Province
+        </p>
+    </field>
+    </record>
+
     <!--menu-->
-    <menuitem id="menu_customer" name="Customer" parent="menu_root" action="action_customer"/>
+    <menuitem id="menu_customer" name="Customer" parent="menu_root" action="action_customer" sequence="1"/>
+    <menuitem id="menu_province" name="Province" parent="menu_root" action="action_province" sequence="2"/>
 
 </odoo>

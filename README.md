@@ -12,6 +12,7 @@ password: admin
 
 # docker home
 docker run -v /dev_path/github/mp_odoo11/trunk:/mnt/extra-addons  -p 8070:8069 --name malphi --link postgres:db odoo
+docker run -p 8071:8069 --name odoo11 --link postgres:dbtest odoo
 
 # docker office
 docker run -v /dev_path/odoo/mp_odoo11/trunk:/mnt/extra-addons  -p 8070:8069 --name malphi --link postgres:db odoo
