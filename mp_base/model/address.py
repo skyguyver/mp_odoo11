@@ -36,6 +36,28 @@ class province(models.Model):
     country_id = fields.Many2one(comodel_name="model.country", string="Country")
     cities_municipalities_ids = fields.One2many(comodel_name="mp.cities_municipalities", inverse_name="province_id", string="City or municipality")
 
+class customer_address(models.Model):
+    _name = 'mp.customer_address'
+
+    customer_id = fields.Many2one(comodel_name='mp.customer', string="Customer")
+    address1 = fields.Char(size=100, string='Address 1', )
+    address2 = fields.Char(size=100, string='Address 2')
+    address3 = fields.Char(size=100, string='Address 3')
+    city = fields.Char(size=40, string='City', )
+    postcode = fields.Char(size=20, string='Postal code', )
+    country_id = fields.Many2one(comodel_name='res.country', string='Country',ondelete='restrict')
+    country_code = fields.Char(string='Country code', related='country_id.code')
+    default_rec = fields.Boolean(string='Default address', default=False,
+                  help='If customer has more than one address, this field indicates which is the default address')
+    active = fields.Boolean(string='Active',default=True)
+    comments = fields.Text(string='Comments')
+    address_type = fields.Selection([
+        ('Permanent', 'Permanent'),
+        ('Residential', 'Residential'),
+        ('Work', 'Work'),
+        ('Mailing', 'Mailing'),
+        ('Other', 'Other'),
+        ], string='Address type',default='Permanent')
 # def sanitize_account_number(acc_number):
 #     if acc_number:
 #         return re.sub(r'\W+', '', acc_number).upper()

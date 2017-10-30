@@ -5,7 +5,7 @@
 
     <record id="customers_form_view" model="ir.ui.view">
         <field name="name">customers - form view</field>
-        <field name="model">mp.customers</field>
+        <field name="model">mp.customer</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
             <form>
@@ -15,6 +15,24 @@
                         <field name="name" default_focus="1" placeholder="Name"/>
                     </h1>
                 </div>
+                <group>
+                    <group>
+                        <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street1" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True, "no_create": True}' context="{'country_id': country_id}"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                <field name="country_id" placeholder="Country" class="o_address_country"/>
+                            </div>
+                    </group>
+                    <group>
+                        <field name="phone"/>
+                        <field name="mobile"/>
+                        <field name="email"/>
+                    </group>
+                </group>
             </sheet>
             </form>
         </field>
@@ -23,18 +41,17 @@
 
     <record id="customers_tree_view" model="ir.ui.view">
         <field name="name">customers view form</field>
-        <field name="model">mp.customers</field>
+        <field name="model">mp.customer</field>
         <field name="arch" type="xml">
             <tree string="My First Tree View">
                 <field name="name"/>
-                <field name="passport"/>
             </tree>
         </field>
     </record>
 
     <record id="action_customer" model="ir.actions.act_window">
     <field name="name">Customer</field>
-    <field name="res_model">mp.customers</field>
+    <field name="res_model">mp.customer</field>
     <field name="view_type">form</field>
     <field name="view_mode">tree,form</field>
     <field name="help" type="html">
