@@ -17,8 +17,24 @@ class customers(models.Model):
     phone = fields.Char(size=20, string="Phone")
     mobile = fields.Char(size=20, string="Mobile")
     email = fields.Char(size=40, string="Email")
+    acct_ids = fields.One2many(comodel_name='mp.customer_acct', inverse_name='customer_id', string="Accounts")
 
 class customer_acct(models.Model):
     _name = 'mp.customer_acct'
 
-    name = fields.Char()
+    # def _get_code(self):
+    #     obj_sequence = self.pool.get('ir.sequence')
+    #     print obj_sequence
+    #     return obj_sequence.next_by_code('mp.customer.acct.sequence')
+
+    name = fields.Char(related='customer_id.name', string='Customer')
+    # acct_no = fields.Char(size=20, string='Account number', index=True, default=_get_code())
+    acct_no = fields.Char(size=20, string='Account number', index=True)
+    passport = fields.Char()
+    date_activated = fields.Date(string='Date activated')
+    customer_id = fields.Many2one(comodel_name='mp.customer', string='Customer', ondelete='restrict')
+    comments = fields.Char()
+    state = fields.Selection([
+        ('New', 'New'),
+        ('Active', 'Active')
+        ], string="Status", default="New")
