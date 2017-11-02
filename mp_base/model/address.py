@@ -33,7 +33,7 @@ class province(models.Model):
         ('Visayas','Visayas'),
         ('Mindanao','Mindanao')
     ],string="Division")
-    country_id = fields.Many2one(comodel_name="model.country", string="Country")
+    country_id = fields.Many2one(comodel_name="res.country", string="Country")
     cities_municipalities_ids = fields.One2many(comodel_name="mp.cities_municipalities", inverse_name="province_id", string="City or municipality")
 
 class customer_address(models.Model):

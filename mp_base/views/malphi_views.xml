@@ -4,7 +4,7 @@
     <menuitem id="menu_root" name="MalPhi"/>
 
 
-
+    <!--VIEW-->
     <record id="customer_acct_form_view" model="ir.ui.view">
         <field name="name">customer account- form view</field>
         <field name="model">mp.customer_acct</field>
@@ -40,6 +40,9 @@
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
             <form>
+                <header>
+                        <button name="test_func" type="object" string="test"/>
+                </header>
             <sheet>
                 <div class="oe_title">
                     <h1>
@@ -90,6 +93,8 @@
         </field>
     </record>
 
+
+    <!--ACTION-->
     <record id="action_customer" model="ir.actions.act_window">
     <field name="name">Customer</field>
     <field name="res_model">mp.customer</field>
@@ -98,6 +103,18 @@
     <field name="help" type="html">
         <p class="oe_view_nocontent_create">
             Click here to create new Customer
+        </p>
+    </field>
+    </record>
+
+    <record id="action_account" model="ir.actions.act_window">
+    <field name="name">Account</field>
+    <field name="res_model">mp.customer_acct</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+            Click here to create new Account
         </p>
     </field>
     </record>
@@ -116,6 +133,7 @@
 
     <!--menu-->
     <menuitem id="menu_customer" name="Customer" parent="menu_root" action="action_customer" sequence="1"/>
-    <menuitem id="menu_province" name="Province" parent="menu_root" action="action_province" sequence="2"/>
+    <menuitem id="menu_account" name="Account" parent="menu_root" action="action_account" sequence="2"/>
+    <menuitem id="menu_province" name="Province" parent="menu_root" action="action_province" sequence="3"/>
 
 </odoo>

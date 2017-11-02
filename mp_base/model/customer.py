@@ -1,9 +1,17 @@
 # -*- coding: utf-8 -*-
 
+import logging
 from odoo import api, fields, models
+from odoo.exceptions import Warning
+
+_logger = logging.getLogger(__name__)
 
 class customers(models.Model):
     _name = 'mp.customer'
+
+    def test_func(self):
+        obj_sequence = self.pool.get('ir.sequence')
+        _logger.warning('XXXXXXX:' + str(obj_sequence));
 
     name = fields.Char()
     # address_ids = fields.One2many(comodel_name='mp.customer_address', inverse_name='customer_id', string='Customer address')
@@ -22,14 +30,8 @@ class customers(models.Model):
 class customer_acct(models.Model):
     _name = 'mp.customer_acct'
 
-    # def _get_code(self):
-    #     obj_sequence = self.pool.get('ir.sequence')
-    #     print obj_sequence
-    #     return obj_sequence.next_by_code('mp.customer.acct.sequence')
-
     name = fields.Char(related='customer_id.name', string='Customer')
-    # acct_no = fields.Char(size=20, string='Account number', index=True, default=_get_code())
-    acct_no = fields.Char(size=20, string='Account number', index=True)
+    acct_no = fields.Char(size=20, string='Account number', index=True, default=lambda self: self.env['ir.sequence'].next_by_code('customer_acct.acctno.sequence'))
     passport = fields.Char()
     date_activated = fields.Date(string='Date activated')
     customer_id = fields.Many2one(comodel_name='mp.customer', string='Customer', ondelete='restrict')

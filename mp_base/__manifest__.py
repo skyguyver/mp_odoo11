@@ -9,7 +9,9 @@
 This application allows you to manage your customers for MalPhi.
     """,
     'depends': ['base'],
-    'data': ['views/malphi_views.xml'],
+    'data': ['views/malphi_views.xml'
+            ,'data/customer_acct_sequence.xml'
+             ],
     'demo': [],
     'test': [],
     'installable': True,
