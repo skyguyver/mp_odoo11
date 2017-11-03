@@ -132,8 +132,11 @@
     </record>
 
     <!--menu-->
-    <menuitem id="menu_customer" name="Customer" parent="menu_root" action="action_customer" sequence="1"/>
-    <menuitem id="menu_account" name="Account" parent="menu_root" action="action_account" sequence="2"/>
-    <menuitem id="menu_province" name="Province" parent="menu_root" action="action_province" sequence="3"/>
+    <menuitem id="menu_manage" name="Inquire" parent="menu_root" sequence="1"/>
+    <menuitem id="menu_inquire" name="Manage" parent="menu_root" sequence="2"/>
+
+    <menuitem id="menu_customer" name="Customer" parent="menu_manage" action="action_customer" sequence="1"/>
+    <menuitem id="menu_account" name="Account" parent="menu_manage" action="action_account" sequence="2"/>
+    <menuitem id="menu_province" name="Province" parent="menu_inquire" action="action_province" sequence="3"/>
 
 </odoo>
