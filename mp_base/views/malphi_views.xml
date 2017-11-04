@@ -24,6 +24,7 @@
                     <group colspan="4">
                         <group>
                             <field name="passport"/>
+                            <field name="passport_expiry"/>
                         </group>
                         <group>
                             <field name="comments"/>
