@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="guest_form_view" model="ir.ui.view">
+        <field name="name">guest.form.view</field>
+        <field name="inherit_id" ref="skyguyver_base.customer_form_view"/>
+        <field name="model">gunit.customer</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='phone']" position="after">
+                <field name="passport"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--===============-->
+    <!--ACTION-->
+    <!--===============-->
+    <record id="action_customer" model="ir.actions.act_window">
+        <field name="name">Guest</field>
+        <field name="res_model">gunit.customer</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click here to create new Guest
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Top menu item -->
+    <menuitem id="menu_root" name="MalPhi"/>
+
+    <!--menu-->
+    <menuitem id="menu_manage" name="Manage" parent="menu_root" sequence="1"/>
+    <menuitem id="menu_customer" name="Guest" parent="menu_manage" action="action_customer" sequence="1"/>
+
+</odoo>
